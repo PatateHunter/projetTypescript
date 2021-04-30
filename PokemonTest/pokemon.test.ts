@@ -48,5 +48,9 @@ describe('Combat entre pokemon', () => {
         expect(rattatack.attack4(pikachu)).toBe(79);
     });
 
+    it('rattack should attack pikachu and his hp should be 79', () => {
+        expect(rattatack.randomAttack(pikachu)).toBe(79);
+    });
+
 
 });

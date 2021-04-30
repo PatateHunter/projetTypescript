@@ -20,8 +20,11 @@ export class Pokemon implements IPokemon{
         this.defense = props.defense;
     }
 
+    private _attack = "attack";
+
      attack1(poke1: Pokemon):number {
-        return poke1.hp -= this.calculateAttack(poke1);
+        return (poke1.hp -= this.calculateAttack(poke1)) > 0 ? poke1.hp : 0;
+
     }
 
     static WhichShouldAttack(poke1: Pokemon, poke2: Pokemon):Pokemon {
@@ -33,12 +36,28 @@ export class Pokemon implements IPokemon{
     }
 
     attack2(poke1: Pokemon):number {
-        return poke1.hp -= (this.calculateAttack(poke1))*1.2;
+        return (poke1.hp -= (this.calculateAttack(poke1))*1.2) > 0 ? poke1.hp : 0;
     }
     attack3(poke1: Pokemon):number {
-        return poke1.hp -= (this.calculateAttack(poke1))*1.3;
+        return (poke1.hp -= (this.calculateAttack(poke1))*1.3) > 0 ? poke1.hp : 0;
     }
     attack4(poke1: Pokemon):number {
-        return poke1.hp -= (this.calculateAttack(poke1))*1.5;
+        return (poke1.hp -= (this.calculateAttack(poke1))*1.5) > 0 ? poke1.hp : 0;
+    }
+    randomAttack(poke1: Pokemon):number {
+        if (this.hp > 0) {
+          let randomAttack = this.returnAttackUsed();
+          let result: any;
+        // @ts-ignore
+        result = this[randomAttack](poke1);
+        return result;
+    }
+    else return 0;
+    }
+
+    private returnAttackUsed():string{
+        let attack = this._attack;
+        attack += Math.floor(Math.random()*4) + 1;
+        return attack;
     }
 }

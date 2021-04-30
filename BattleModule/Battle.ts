@@ -23,10 +23,10 @@ export class Battle implements IBattle{
     private fightOneTurn() {
       const pokeTurn =  Pokemon.WhichShouldAttack(this.poke1,this.poke2);
         if (pokeTurn == this.poke1){
-            this.poke1.attack1(this.poke2);
-            return
+            this.poke1.randomAttack(this.poke2);
+
         }
-        this.poke2.attack1(this.poke1);
+        this.poke2.randomAttack(this.poke1);
     }
 
     private checkIfBothPokemonAreAlive():boolean{

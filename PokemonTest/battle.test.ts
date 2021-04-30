@@ -8,9 +8,6 @@ describe('Combat entre pokemon', () => {
     let combat1: Battle;
 
     beforeEach(() => {
-
-
-
         pikachu = new Pokemon({
             name: "pika",
             hp: 100,
@@ -36,6 +33,7 @@ describe('Combat entre pokemon', () => {
     it('Pikachu should win againt rattatack', () => {
         expect(combat1.fight()).toBe(pikachu);
     });
+
 
 
 });
