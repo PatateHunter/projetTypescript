@@ -44,18 +44,34 @@ export class Pokemon implements IPokemon{
     attack4(poke1: Pokemon):number {
         return (poke1.hp -= (this.calculateAttack(poke1))*1.5) > 0 ? poke1.hp : 0;
     }
-    randomAttack(poke1: Pokemon):number {
+    async randomAttack(poke1: Pokemon,forcedNumber?:number): Promise<number> {
         if (this.hp > 0) {
-          let randomAttack = this.returnAttackUsed();
-          let result: any;
-        // @ts-ignore
-        result = this[randomAttack](poke1);
-        return result;
-    }
-    else return 0;
+            let randomAttack = this.returnAttackUsed(forcedNumber);
+            // let promise = await new Promise(resolve => setTimeout(resolve, 1000));
+            let result: any;
+            // @ts-ignore
+            result = this[randomAttack](poke1);
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(result)
+                }, 1000);
+            });
+        } else {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(0)
+                }, 1000);
+            });
+
+        }
     }
 
-    private returnAttackUsed():string{
+
+
+
+    private returnAttackUsed(forcedNumber?:number):string{
+         if(forcedNumber !== undefined && forcedNumber < 5 && forcedNumber > 0)
+             return this._attack + forcedNumber;
         let attack = this._attack;
         attack += Math.floor(Math.random()*4) + 1;
         return attack;

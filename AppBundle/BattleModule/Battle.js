@@ -16,7 +16,7 @@ var Battle = /** @class */ (function () {
     Battle.prototype.fightOneTurn = function () {
         var pokeTurn = src_1.Pokemon.WhichShouldAttack(this.poke1, this.poke2);
         if (pokeTurn == this.poke1) {
-            this.poke1.randomAttack(this.poke2);
+             this.poke1.randomAttack(this.poke2);
         }
         this.poke2.randomAttack(this.poke1);
     };

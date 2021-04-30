@@ -48,8 +48,20 @@ describe('Combat entre pokemon', () => {
         expect(rattatack.attack4(pikachu)).toBe(79);
     });
 
-    it('rattack should attack pikachu and his hp should be 79', () => {
-        expect(rattatack.randomAttack(pikachu)).toBe(79);
+    it('rattack should random attack pikachu and his hp should be 86', async () => {
+        expect(await rattatack.randomAttack(pikachu,1)).toBe(86);
+    });
+
+    it('rattack should random attack pikachu and his hp should be 83.2', async () => {
+        expect(await rattatack.randomAttack(pikachu,2)).toBe(83.2);
+    });
+
+    it('rattack should random attack pikachu and his hp should be 81.8', async () => {
+        expect(await rattatack.randomAttack(pikachu,3)).toBe(81.8);
+    });
+
+    it('rattack should random attack pikachu and his hp should be 79', async () => {
+        expect(await rattatack.randomAttack(pikachu,4)).toBe(79);
     });
 
 
